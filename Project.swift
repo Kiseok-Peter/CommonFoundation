@@ -23,7 +23,19 @@ import MyPlugin
 // Local plugin loaded
 let localHelper = LocalHelper(name: "MyPlugin")
 
-// Creates our project using a helper function defined in ProjectDescriptionHelpers
-let project = Project.app(name: "CommonFoundation",
-                          platform: .iOS,
-                          additionalTargets: ["CommonFoundationKit", "CommonFoundationUI"])
+let name = "CommonFoundation"
+
+let targets = [Project.createTarget(name: name,
+                                    product: .framework,
+                                    sources: [
+                                        "\(name)/Sources/**"
+                                    ]),
+               Project.createTarget(name: "\(name)Tests",
+                                    product: .unitTests,
+                                    sources: [
+                                        "\(name)/Tests/**"
+                                    ],
+                                    dependencies: [.target(name: name)])]
+
+let project = Project(name: name,
+                      targets: targets)
