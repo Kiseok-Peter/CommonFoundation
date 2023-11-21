@@ -7,6 +7,14 @@
 
 import Foundation
 
-extension Array {
-    public subscript(safe index: Index) -> Element? { indices ~= index ? self[index] : nil }
+public extension Array {
+    subscript(safe index: Index) -> Element? { indices ~= index ? self[index] : nil }
+    
+    subscript(safe range: Range<Int>) -> Array<Element>? {
+        indices ~= range ? Array(self[range]) : nil
+    }
+    
+    subscript(safe range: ClosedRange<Int>) -> Array<Element>? {
+        indices ~= range ? Array(self[range]) : nil
+    }
 }
