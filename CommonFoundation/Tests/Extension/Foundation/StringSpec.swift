@@ -19,13 +19,13 @@ final class StringSpec: QuickSpec {
                 var url: URL?
                 
                 beforeEach {
-                    urlString = "https://naver.com"
+                    urlString = "https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&query=아이유"
                     url = urlString.toURL
                 }
                 
                 it("URL 반환") {
                     expect(url).toNot(beNil())
-                    expect(url?.absoluteString).to(equal(urlString))
+                    expect(url?.absoluteString).to(equal(urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)))
                 }
             }
             
