@@ -77,6 +77,39 @@ final class ArraySpec: QuickSpec {
                     }
                 }
             }
+            
+            describe("safe closed range 기능 테스트") {
+                context("range safe 범위 내 추출 시") {
+                    var range: ClosedRange<Int>!
+                    var subArray: Array<Int>?
+                    
+                    beforeEach {
+                        range = 1 ... 4
+                        subArray = array[safe: range]
+                    }
+                    
+                    it("정상 sub Array 추출") {
+                        expect(subArray).toNot(beNil())
+                        expect(subArray?.isEmpty).to(beFalse())
+                        expect(subArray?.first).to(equal(array[safe: range.lowerBound]))
+                        expect(subArray?.last).to(equal(array[safe: range.upperBound]))
+                    }
+                }
+                
+                context("range safe 범위 외 추출 시") {
+                    var range: ClosedRange<Int>!
+                    var subArray: Array<Int>?
+                    
+                    beforeEach {
+                        range = -1 ... 5
+                        subArray = array[safe: range]
+                    }
+                    
+                    it("nil 반환") {
+                        expect(subArray).to(beNil())
+                    }
+                }
+            }
         }
     }
 }
