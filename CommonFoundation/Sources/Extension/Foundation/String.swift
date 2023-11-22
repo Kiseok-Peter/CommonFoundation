@@ -11,7 +11,7 @@ import Foundation
 extension String {
     /// URL 변환
     public var toURL: URL? {
-        if isPercent, let encoded = addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+        if !isPercent, let encoded = addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
             return URL(string: encoded)
         } else {
             return URL(string: self)
@@ -19,6 +19,6 @@ extension String {
     }
     
     private var isPercent: Bool {
-        removingPercentEncoding == self
+        removingPercentEncoding != self
     }
 }
