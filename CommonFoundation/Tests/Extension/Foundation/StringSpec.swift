@@ -42,6 +42,19 @@ final class StringSpec: QuickSpec {
                     expect(url?.absoluteString).to(equal(urlString))
                 }
             }
+            
+            context("url 포맷이 아닌 stirng 변환") {
+                var url: URL?
+                
+                beforeEach {
+                    urlString = ""
+                    url = urlString.toURL
+                }
+                
+                it("nil 반환") {
+                    expect(url).to(beNil())
+                }
+            }
         }
     }
 }
