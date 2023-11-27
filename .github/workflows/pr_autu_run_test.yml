@@ -2,12 +2,11 @@
 name: Pull Request Run Test
 
 on:
-  workflow_dispatch:
-  # pull_request:
-  #   branches:
-  #     - 'develop'
-  #     - 'release/*'
-  #     - 'hotfix/*'
+  pull_request:
+    branches:
+      - 'develop'
+      - 'release/*'
+      - 'hotfix/*'
 
 jobs:
   Unit_Test:
@@ -33,7 +32,6 @@ jobs:
       - uses: kishikawakatsumi/xcresulttool@v1
         with:
           path: TestResults.xcresult
-        if: success() || failure()
 
       - name: Deinitialize
         run: rm -rf TestResults.xcresult
