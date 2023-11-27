@@ -10,8 +10,26 @@ on:
   #     - 'hotfix/*'
 
 jobs:
-  test:
+  Unit_Test:
     runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Initialize
+        run: |
+          rm -rf build/
+          rm -rfv ~/Library/Developer/Xcode/Archives/*
+
+      - name: Tuist init
+        run: tuist generate
+        
+      - name: Run Test Code
+        run: sh ./script/run_test.sh
+        
+      - uses: kishikawakatsumi/xcresulttool@v1
+        with:
+          path: TestResults.xcresult
+
+      - name: Deinitialize
+        run: rm -rf TestResults.xcresult
