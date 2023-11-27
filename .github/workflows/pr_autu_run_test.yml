@@ -17,9 +17,6 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           submodules: true
-          
-      - name: Test
-        run: echo ${{ secrets.PAT }}
         
       - name: Initialize
         run: |
