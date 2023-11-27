@@ -33,7 +33,6 @@ jobs:
       - uses: kishikawakatsumi/xcresulttool@v1
         with:
           path: TestResults.xcresult
-          token: ${{ secrets.PAT }}
         if: success() || failure()
 
       - name: Deinitialize
