@@ -1,0 +1,16 @@
+# PR 요청시 develop, release/*, hotfix/*에 요청하는 경우 테스트 코드 검사 실행
+name: Pull Request Run Test
+
+on:
+  pull_request:
+    branches:
+      - 'develop'
+      - 'release/*'
+      - 'hotfix/*'
+
+jobs:
+  test:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v3
