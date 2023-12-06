@@ -1,5 +1,4 @@
 import ProjectDescription
-import ProjectDescriptionHelpers
 import EnvPlugin
 
 // MARK: - Project
