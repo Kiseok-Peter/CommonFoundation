@@ -1,47 +1,30 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
-import MyPlugin
-
-/*
-                +-------------+
-                |             |
-                |     App     | Contains CommonFoundation App target and CommonFoundation unit-test target
-                |             |
-         +------+-------------+-------+
-         |         depends on         |
-         |                            |
- +----v-----+                   +-----v-----+
- |          |                   |           |
- |   Kit    |                   |     UI    |   Two independent frameworks to share code and start modularising your app
- |          |                   |           |
- +----------+                   +-----------+
-
- */
+import EnvPlugin
 
 // MARK: - Project
 
-// Local plugin loaded
-let localHelper = LocalHelper(name: "MyPlugin")
+let env = ProjectEnvHelper()
 
-let name = "CommonFoundation"
+let targets = [Target(name: env.name,
+                      product: .framework,
+                      bundleName: env.organizationName,
+                      sources: [
+                        "\(env.name)/Sources/**"
+                      ]),
+               Target(name: "\(env.name)Tests",
+                      product: .unitTests,
+                      bundleName: env.organizationName,
+                      sources: [
+                        "\(env.name)/Tests/**"
+                      ],
+                      dependencies: [
+                        .target(name: env.name),
+                        .package(product: "Quick"),
+                        .package(product: "Nimble"),
+                      ])]
 
-let targets = [Project.createTarget(name: name,
-                                    product: .framework,
-                                    sources: [
-                                        "\(name)/Sources/**"
-                                    ]),
-               Project.createTarget(name: "\(name)Tests",
-                                    product: .unitTests,
-                                    sources: [
-                                        "\(name)/Tests/**"
-                                    ],
-                                    dependencies: [
-                                        .target(name: name),
-                                        .package(product: "Quick"),
-                                        .package(product: "Nimble"),
-                                    ])]
-
-let project = Project(name: name,
+let project = Project(name: env.name,
                       packages: [
                         .remote(url:"https://github.com/Quick/Quick.git",
                                 requirement: .upToNextMajor(from: "7.0.0")),
