@@ -1,5 +1,6 @@
 import ProjectDescription
 import EnvPlugin
+import TuistTemplate
 
 // MARK: - Project
 
