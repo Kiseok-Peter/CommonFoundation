@@ -26,8 +26,8 @@ jobs:
       - name: Tuist Check
         run: sh get_started.sh
 
-      - name: Tuist init
-        run: tuist generate
+      - name: Tuist build
+        run: tuist build
         
       - name: Run Test Code
         run: sh ./script/run_test.sh
