@@ -1,45 +1,28 @@
 import ProjectDescription
-import ProjectDescriptionHelpers
-import MyPlugin
-
-/*
-                +-------------+
-                |             |
-                |     App     | Contains CommonFoundation App target and CommonFoundation unit-test target
-                |             |
-         +------+-------------+-------+
-         |         depends on         |
-         |                            |
- +----v-----+                   +-----v-----+
- |          |                   |           |
- |   Kit    |                   |     UI    |   Two independent frameworks to share code and start modularising your app
- |          |                   |           |
- +----------+                   +-----------+
-
- */
+import TuistTemplate
 
 // MARK: - Project
 
-// Local plugin loaded
-let localHelper = LocalHelper(name: "MyPlugin")
-
 let name = "CommonFoundation"
+let organizationName = "kr.kiseok"
 
-let targets = [Project.createTarget(name: name,
-                                    product: .framework,
-                                    sources: [
-                                        "\(name)/Sources/**"
-                                    ]),
-               Project.createTarget(name: "\(name)Tests",
-                                    product: .unitTests,
-                                    sources: [
-                                        "\(name)/Tests/**"
-                                    ],
-                                    dependencies: [
-                                        .target(name: name),
-                                        .package(product: "Quick"),
-                                        .package(product: "Nimble"),
-                                    ])]
+let targets = [Target(name: name,
+                      product: .framework,
+                      bundleName: organizationName,
+                      sources: [
+                        "\(name)/Sources/**"
+                      ]),
+               Target(name: "\(name)Tests",
+                      product: .unitTests,
+                      bundleName: organizationName,
+                      sources: [
+                        "\(name)/Tests/**"
+                      ],
+                      dependencies: [
+                        .target(name: name),
+                        .package(product: "Quick"),
+                        .package(product: "Nimble"),
+                      ])]
 
 let project = Project(name: name,
                       packages: [
