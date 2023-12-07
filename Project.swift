@@ -1,30 +1,30 @@
 import ProjectDescription
-import EnvPlugin
 import TuistTemplate
 
 // MARK: - Project
 
-let env = ProjectEnvHelper()
+let name = "CommonFoundation"
+let organizationName = "kr.kiseok"
 
-let targets = [Target(name: env.name,
+let targets = [Target(name: name,
                       product: .framework,
-                      bundleName: env.organizationName,
+                      bundleName: organizationName,
                       sources: [
-                        "\(env.name)/Sources/**"
+                        "\(name)/Sources/**"
                       ]),
-               Target(name: "\(env.name)Tests",
+               Target(name: "\(name)Tests",
                       product: .unitTests,
-                      bundleName: env.organizationName,
+                      bundleName: organizationName,
                       sources: [
-                        "\(env.name)/Tests/**"
+                        "\(name)/Tests/**"
                       ],
                       dependencies: [
-                        .target(name: env.name),
+                        .target(name: name),
                         .package(product: "Quick"),
                         .package(product: "Nimble"),
                       ])]
 
-let project = Project(name: env.name,
+let project = Project(name: name,
                       packages: [
                         .remote(url:"https://github.com/Quick/Quick.git",
                                 requirement: .upToNextMajor(from: "7.0.0")),
