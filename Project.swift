@@ -20,15 +20,9 @@ let targets = [Target(name: name,
                       ],
                       dependencies: [
                         .target(name: name),
-                        .package(product: "Quick"),
-                        .package(product: "Nimble"),
+                        .external(name: "Quick"),
+                        .external(name: "Nimble"),
                       ])]
 
 let project = Project(name: name,
-                      packages: [
-                        .remote(url:"https://github.com/Quick/Quick.git",
-                                requirement: .upToNextMajor(from: "7.0.0")),
-                        .remote(url:"https://github.com/Quick/Nimble.git",
-                                requirement: .upToNextMajor(from: "13.0.0"))
-                      ],
                       targets: targets)
