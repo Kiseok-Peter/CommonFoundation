@@ -9,11 +9,11 @@ on:
       - 'hotfix/*'
 
 jobs:
-  Unit_Test:
+  Initialize:
     runs-on: self-hosted
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT }}
           submodules: true
@@ -23,12 +23,22 @@ jobs:
           rm -rf build/
           rm -rfv ~/Library/Developer/Xcode/Archives/*
           
+  Tuist-Initialize:
+    runs-on: self-hosted
+    needs: Initialize
+    
+    steps:
       - name: Tuist Check
         run: sh get_started.sh
 
       - name: Tuist build
-        run: tuist build
-        
+        run: mise x -- tuist build
+
+  Run-Test:
+    runs-on: self-hosted
+    needs: Tuist-Initialize
+    
+    steps:
       - name: Run Test Code
         run: sh ./script/run_test.sh
         
@@ -36,5 +46,10 @@ jobs:
         with:
           path: TestResults.xcresult
 
+  Deinitialize:
+    runs-on: self-hosted
+    needs: Run-Test
+    
+    steps:
       - name: Deinitialize
         run: rm -rf TestResults.xcresult
