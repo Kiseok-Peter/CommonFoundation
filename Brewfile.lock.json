@@ -1,0 +1,57 @@
+{
+  "entries": {
+    "brew": {
+      "mise": {
+        "version": "2024.10.13",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sequoia": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:30e06864e7104f99ad35343bbde9bf33919a6d5870ea365508acea5b0f70a318",
+              "sha256": "30e06864e7104f99ad35343bbde9bf33919a6d5870ea365508acea5b0f70a318"
+            },
+            "arm64_sonoma": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:303dc601848ef7a7c326d9266fea818d2e6ca8041d2a4b153004c9535a6fb5bf",
+              "sha256": "303dc601848ef7a7c326d9266fea818d2e6ca8041d2a4b153004c9535a6fb5bf"
+            },
+            "arm64_ventura": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:fb46b72caeef93e9a0c3015c59385f9044a2a61d6540e73997c377b5c66a6acc",
+              "sha256": "fb46b72caeef93e9a0c3015c59385f9044a2a61d6540e73997c377b5c66a6acc"
+            },
+            "sonoma": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:1510c4f1e064ae31ad976a99cd36d8e582c0dba99a5ec49f7946bb3bee8ac563",
+              "sha256": "1510c4f1e064ae31ad976a99cd36d8e582c0dba99a5ec49f7946bb3bee8ac563"
+            },
+            "ventura": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:60f963a0b9175e40212ed058a69749313830b0e2e6b3a1e9a8a1e886e94a6ac2",
+              "sha256": "60f963a0b9175e40212ed058a69749313830b0e2e6b3a1e9a8a1e886e94a6ac2"
+            },
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/mise/blobs/sha256:45b8d21a68af343d567d416c5c0d68297c13f390042177adbd2e1b002daa50b0",
+              "sha256": "45b8d21a68af343d567d416c5c0d68297c13f390042177adbd2e1b002daa50b0"
+            }
+          }
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "sonoma": {
+        "HOMEBREW_VERSION": "4.4.2",
+        "HOMEBREW_PREFIX": "/usr/local",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "15.3.0.0.1.1708646388",
+        "Xcode": "15.4",
+        "macOS": "14.0"
+      }
+    }
+  }
+}
