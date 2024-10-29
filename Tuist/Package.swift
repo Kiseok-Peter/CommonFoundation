@@ -25,5 +25,10 @@ let package = Package(
         // You can read more about dependencies here: https://docs.tuist.io/documentation/tuist/dependencies
         .package(url: "https://github.com/Quick/Quick.git", from: "7.6.2"),
         .package(url: "https://github.com/Quick/Nimble.git", from: "13.6.0"),
+    ],
+    targets: [
+        .target(name: "CommonFoundation"),
+        .testTarget(name: "CommonFoundationTests",
+                    dependencies: ["CommonFoundation"]),
     ]
 )
