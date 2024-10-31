@@ -13,6 +13,8 @@ while [ "$#" -gt 0 ]; do
   esac
 done
 
+cp Tuist/Package.swift ./
+
 # 적용된 arguments 확인용 print
 echo TUIST_CACHE_CLEAN = ${TUIST_CACHE_CLEAN}
 
