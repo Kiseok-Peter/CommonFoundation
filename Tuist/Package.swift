@@ -28,10 +28,5 @@ let package = Package(
     ],
     targets: [
         .target(name: "CommonFoundation", path: "CommonFoundation"),
-        .testTarget(name: "CommonFoundationTests",
-                    dependencies: ["CommonFoundation",
-                                   "Quick",
-                                   "Nimble",],
-                   path: "CommonFoundationTests"),
     ]
 )
