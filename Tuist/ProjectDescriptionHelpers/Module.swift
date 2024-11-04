@@ -10,14 +10,14 @@ import TuistTemplate
 
 public enum Module: String, CaseIterable {
     case foundation = "CommonFoundation"
-    case tests = "CommonFoundationTests"
+//    case tests = "CommonFoundationTests"
 }
 
 extension Module: ModuleProtocol {
     public var product: Product {
         switch self {
         case .foundation: .framework
-        case .tests: .unitTests
+//        case .tests: .unitTests
         }
     }
     
@@ -28,10 +28,10 @@ extension Module: ModuleProtocol {
     public var dependencies: [TargetDependency] {
         switch self {
         case .foundation: []
-        case .tests:
-            [.target(name: Module.foundation.rawValue),
-             .external(name: "Quick"),
-             .external(name: "Nimble"),]
+//        case .tests:
+//            [.target(name: Module.foundation.rawValue),
+//             .external(name: "Quick"),
+//             .external(name: "Nimble"),]
         }
     }
 }

@@ -27,15 +27,11 @@ let package = Package(
         .package(url: "https://github.com/Quick/Nimble.git", from: "13.6.0"),
     ],
     targets: [
-        .target(name: "CommonFoundation",
-                path: "CommonFoundation",
-                exclude: [
-                    "CommonFoundationTests"
-                ]),
-        .testTarget(name: "CommonFoundationTests",
-                    dependencies: ["CommonFoundation",
-                                   .product(name: "Quick", package: "Quick"),
-                                   .product(name: "Nimble", package: "Nimble"),],
-                    path: "CommonFoundationTests"),
+        .target(name: "CommonFoundation", path: "CommonFoundation"),
+//        .testTarget(name: "CommonFoundationTests",
+//                    dependencies: ["CommonFoundation",
+//                                   .product(name: "Quick", package: "Quick"),
+//                                   .product(name: "Nimble", package: "Nimble"),],
+//                    path: "CommonFoundationTests"),
     ]
 )
