@@ -30,8 +30,8 @@ let package = Package(
         .target(name: "CommonFoundation", path: "CommonFoundation"),
         .testTarget(name: "CommonFoundationTests",
                     dependencies: ["CommonFoundation",
-                                   "Quick",
-                                   "Nimble",],
-                   path: "CommonFoundationTests"),
+                                   .product(name: "Quick", package: "Quick"),
+                                   .product(name: "Nimble", package: "Nimble"),],
+                    path: "CommonFoundationTests"),
     ]
 )
